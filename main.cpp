@@ -12,6 +12,8 @@
 #include <set>
 #include <regex>
 
+using namespace std;
+
 namespace {
 	std::string program_name;
 
@@ -211,38 +213,48 @@ void merge() {
 // 	return 0;
 // }
 
-int main(int argc, const char* argv[]) {
-	program_name = argv[0];
-	bool merg;
-	int threshold, count;
-	try {
-		process_clarg(merg, count, threshold, argc, argv);
-	} catch (const char *s) {
-		std::cerr << "Error: " << s << std::endl;
-		exit(0);
-	}
-	if (merg)
-		merge();
-	else 
-		distribute((unsigned) threshold, (unsigned) count);
-	return 0;
-}
-// 		auto num_share = std::vector<int>{130, 512, 612, 227, 732, 733, 437, 512};
-// 		auto hex_share = Shamir::power2ToHex(num_share, 10);
-// 		for (auto i: hex_share)
-//   			std::cout << (int)i << ' ';
-// 		std::cout << std::endl;
-// 		// std::cout << hex_share;
-// 		int secret_length = ((num_share.size() * 10 - 42)/32)*4;
-// 		int share_bytes = (secret_length*8 + 42)/8;
-// 		share_bytes += (share_bytes % 8) ? 1 : 0;
-// 		hex_share.resize(share_bytes); /// stripp zero byte introduced by successive zero-padding during 10-bit array conversion to 8-bit array
-// 		share preview(hex_share);
-// 		for (auto i: preview.data)
-//   			std::cout << (int)i << ' ';
-// 		std::cout << std::endl;
-// 		auto index = preview.index;
-// 		std::cout << index << std::endl;
-// 		auto threshold = preview.threshold;
-// 		std::cout << threshold << std::endl;
+// int main(int argc, const char* argv[]) {
+// 	program_name = argv[0];
+// 	bool merg;
+// 	int threshold, count;
+// 	try {
+// 		process_clarg(merg, count, threshold, argc, argv);
+// 	} catch (const char *s) {
+// 		std::cerr << "Error: " << s << std::endl;
+// 		exit(0);
+// 	}
+// 	if (merg)
+// 		merge();
+// 	else 
+// 		distribute((unsigned) threshold, (unsigned) count);
+// 	return 0;
 // }
+
+template <class T, class T2>
+void printBuffer(const std::vector<T>& buffer, const char* message){
+		std::cout << message << std::endl;
+		for (auto i: buffer)
+  			std::cout << (T2)i << ' ';
+		std::cout << std::endl;
+}
+
+int main(int argc, const char* argv[]) {
+		auto mnemonic = std::vector<std::string>{"catch", "lemon", "often", "despair", "resist", "response", "hour", "lemon"};
+		auto num_share = Shamir::slip39ToNum(mnemonic);
+		printBuffer<int, int>(num_share, "mnemonic");
+		// auto num_share = std::vector<int>{130, 512, 612, 227, 732, 733, 437, 512};
+		auto hex_share = Shamir::power2ToHex(num_share, 10);
+		printBuffer<uint8_t, int>(hex_share, "hex share");
+
+		int secret_length = ((num_share.size() * 10 - 42)/32)*4;
+		int share_bytes = (secret_length*8 + 42)/8;
+		share_bytes += (share_bytes % 8) ? 1 : 0;
+		hex_share.resize(share_bytes); /// stripp zero byte introduced by successive zero-padding during 10-bit array conversion to 8-bit array
+		share preview(hex_share);
+		printBuffer<uint8_t, int>(preview.data, "preview");
+
+		auto index = preview.index;
+		std::cout << index << std::endl;
+		auto threshold = preview.threshold;
+		std::cout << threshold << std::endl;
+}
