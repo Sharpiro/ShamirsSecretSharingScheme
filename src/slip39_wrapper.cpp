@@ -22,7 +22,12 @@ namespace Shamir {
 		std::vector<std::vector<uint8_t>> decoded_shares;
 		for (unsigned i=0; i<mnemonics.size(); ++i) {
 			auto line = slip39ToNum(mnemonics.at(i));
+			int lineArray[8];
+			std::copy(line.begin(), line.end(), lineArray);
+
 			auto hex_line = power2ToHex(line, 10);
+			int hexLineArray[10];
+			std::copy(hex_line.begin(), hex_line.end(), hexLineArray);
 			decoded_shares.push_back(hex_line);
 		}
 		return reconstruct_secret_slip(decoded_shares);
