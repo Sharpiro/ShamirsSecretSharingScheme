@@ -157,16 +157,46 @@ namespace {
 	}
 }
 
-int main(int argc, char * argv[]) {
-	if (argc == 1) {
-		print_help(std::cerr, argv[0]);
-		return 1;
-	}
-	try {
-		cli_args(argc, argv);
-	} catch (const char *s) {
-		std::cerr << s << std::endl;
-		exit(1);
-	}
-	return 0;
+// int main(int argc, char * argv[]) {
+// 	if (argc == 1) {
+// 		print_help(std::cerr, argv[0]);
+// 		return 1;
+// 	}
+// 	try {
+// 		cli_args(argc, argv);
+// 	} catch (const char *s) {
+// 		std::cerr << s << std::endl;
+// 		exit(1);
+// 	}
+// 	return 0;
+// }
+
+template <class T, class T2>
+void printBuffer(const std::vector<T>& buffer, const char* message){
+		std::cout << message << std::endl;
+		for (auto i: buffer)
+  			std::cout << (T2)i << ' ';
+		std::cout << std::endl;
 }
+
+int main(int argc, const char* argv[]) {
+		auto mnemonic = std::vector<std::string>{"catch", "lemon", "often", "despair", "resist", "response", "hour", "lemon"};
+		auto num_share = Shamir::slip39ToNum(mnemonic);
+		printBuffer<int, int>(num_share, "mnemonic");
+		// auto num_share = std::vector<int>{130, 512, 612, 227, 732, 733, 437, 512};
+		auto hex_share = Shamir::power2ToHex(num_share, 10);
+		printBuffer<uint8_t, int>(hex_share, "hex share");
+
+		int secret_length = ((num_share.size() * 10 - 42)/32)*4;
+		int share_bytes = (secret_length*8 + 42)/8;
+		share_bytes += (share_bytes % 8) ? 1 : 0;
+		hex_share.resize(share_bytes); /// stripp zero byte introduced by successive zero-padding during 10-bit array conversion to 8-bit array
+		share preview(hex_share);
+		printBuffer<uint8_t, int>(preview.data, "preview");
+
+		auto index = preview.index;
+		std::cout << index << std::endl;
+		auto threshold = preview.threshold;
+		std::cout << threshold << std::endl;
+}
+
