@@ -171,17 +171,17 @@ namespace {
 // 	return 0;
 // }
 
-int main(){
-	int x = 5;
-	x++;
-	int y = x;
-	auto mnemonic = std::vector<std::string>{"catch", "lemon", "often", "despair", "resist", "response", "hour", "lemon"};
-	auto temp = mnemonic[0];
-	std::cout << temp << std::endl;
-	auto mnemonics = std::vector<std::vector<std::string>>{mnemonic};
- 	auto num_share = Shamir::toEnthropy(mnemonics);
-	return 0;
-}
+// int main(){
+// 	int x = 5;
+// 	x++;
+// 	int y = x;
+// 	auto mnemonic = std::vector<std::string>{"catch", "lemon", "often", "despair", "resist", "response", "hour", "lemon"};
+// 	auto temp = mnemonic[0];
+// 	std::cout << temp << std::endl;
+// 	auto mnemonics = std::vector<std::vector<std::string>>{mnemonic};
+//  	auto num_share = Shamir::toEnthropy(mnemonics);
+// 	return 0;
+// }
 
 // template <class T, class T2>
 // void printBuffer(const std::vector<T>& buffer, const char* message){
@@ -191,27 +191,29 @@ int main(){
 // 		std::cout << std::endl;
 // }
 
-// int main(int argc, const char* argv[]) {
-// // 		auto mnemonic = std::vector<std::string>{"catch", "lemon", "often", "despair", "resist", "response", "hour", "lemon"};
-// // 		auto mnemonics = std::vector<std::vector<std::string>>{mnemonic};
-// // 		auto num_share = Shamir::toEnthropy(mnemonics);
-// 		int x = 5;
-// 		x++;
-// 		// printBuffer<int, int>(num_share, "mnemonic");
-// 		// auto num_share = std::vector<int>{130, 512, 612, 227, 732, 733, 437, 512};
-// 		// auto hex_share = Shamir::power2ToHex(num_share, 10);
-// 		// printBuffer<uint8_t, int>(hex_share, "hex share");
+// #include <wordlist.h>
 
-// 		// int secret_length = ((num_share.size() * 10 - 42)/32)*4;
-// 		// int share_bytes = (secret_length*8 + 42)/8;
-// 		// share_bytes += (share_bytes % 8) ? 1 : 0;
-// 		// hex_share.resize(share_bytes); /// stripp zero byte introduced by successive zero-padding during 10-bit array conversion to 8-bit array
-// 		// share preview(hex_share);
-// 		// printBuffer<uint8_t, int>(preview.data, "preview");
+int main()
+{
+	// auto indexes = std::vector<int>{130, 512, 612, 227, 732, 733, 437, 512};
+	// auto hexVector = Shamir::power2ToHex(indexes, 10);
+	// int hexLineArray[10];
+	// std::copy(hexVector.begin(), hexVector.end(), hexLineArray);
 
-// 		// auto index = preview.index;
-// 		// std::cout << index << std::endl;
-// 		// auto threshold = preview.threshold;
-// 		// std::cout << threshold << std::endl;
-// }
+	// auto andBack = Shamir::hexToPower2(hexVector, 10);
+	// int andBackArray[8];
+	// std::copy(andBack.begin(), andBack.end(), andBackArray);
+	try
+	{
+		auto mnemonic = std::vector<std::string>{"acid", "reward", "furnace", "beauty", "warfare", "rich", "town", "awkward"};
+		auto mnemonics = std::vector<std::vector<std::string>>{mnemonic};
+		auto num_share = Shamir::toEnthropy(mnemonics);
+	}
+	catch (const char *s)
+	{
+		std::cerr << s << std::endl;
+		exit(1);
+	}
+	return 0;
+}
 
