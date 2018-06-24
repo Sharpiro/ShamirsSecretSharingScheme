@@ -157,14 +157,41 @@ namespace {
 	}
 }
 
-int main(int argc, char * argv[]) {
-	if (argc == 1) {
-		print_help(std::cerr, argv[0]);
-		return 1;
+// int main(int argc, char * argv[]) {
+// 	if (argc == 1) {
+// 		print_help(std::cerr, argv[0]);
+// 		return 1;
+// 	}
+// 	try {
+// 		cli_args(argc, argv);
+// 	} catch (const char *s) {
+// 		std::cerr << s << std::endl;
+// 		exit(1);
+// 	}
+// 	return 0;
+// }
+
+
+int main()
+{
+	// auto indexes = std::vector<int>{130, 512, 612, 227, 732, 733, 437, 512};
+	// auto hexVector = Shamir::power2ToHex(indexes, 10);
+	// int hexLineArray[10];
+	// std::copy(hexVector.begin(), hexVector.end(), hexLineArray);
+
+	// auto andBack = Shamir::hexToPower2(hexVector, 10);
+	// int andBackArray[8];
+	// std::copy(andBack.begin(), andBack.end(), andBackArray);
+	try
+	{
+		auto mnemonic = std::vector<std::string>{"acid", "reward", "furnace", "beauty", "warfare", "rich", "town", "awkward"};
+		auto mnemonics = std::vector<std::vector<std::string>>{mnemonic};
+		// auto num_share = Shamir::toEnthropy(mnemonics);
+		std::cout << "program done" << std::endl;
 	}
-	try {
-		cli_args(argc, argv);
-	} catch (const char *s) {
+	catch (const char *s)
+	{
+		auto debugString = std::string(s);
 		std::cerr << s << std::endl;
 		exit(1);
 	}

@@ -31,4 +31,4 @@ add_library(shamirsharing
 add_executable(Shamir-cli main.cpp)
 target_link_libraries(Shamir-cli shamirsharing)
 
-add_subdirectory(qt)
+# add_subdirectory(qt)
