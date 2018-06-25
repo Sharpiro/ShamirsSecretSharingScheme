@@ -39,7 +39,7 @@
 #include <hmac_sha256.h>
 #include <hmac_sha512.h>
 
-#include <endian.h>
+#include <portable_endian.h>
 
 
 namespace {

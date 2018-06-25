@@ -4,7 +4,7 @@
 #include <sha256.h>
 
 #include <set>
-#include <endian.h>
+#include <portable_endian.h>
 #include <exception>
 
 using namespace Shamir;

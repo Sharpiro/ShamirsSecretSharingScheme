@@ -1,3 +1,5 @@
+#pragma comment(lib, "Ws2_32.lib")
+
 #include <slip39_wrapper.h>
 
 
@@ -186,12 +188,11 @@ int main()
 	{
 		auto mnemonic = std::vector<std::string>{"acid", "reward", "furnace", "beauty", "warfare", "rich", "town", "awkward"};
 		auto mnemonics = std::vector<std::vector<std::string>>{mnemonic};
-		// auto num_share = Shamir::toEnthropy(mnemonics);
+		auto num_share = Shamir::toEnthropy(mnemonics);
 		std::cout << "program done" << std::endl;
 	}
 	catch (const char *s)
 	{
-		auto debugString = std::string(s);
 		std::cerr << s << std::endl;
 		exit(1);
 	}

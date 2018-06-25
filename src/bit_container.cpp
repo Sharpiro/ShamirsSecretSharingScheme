@@ -1,5 +1,5 @@
 #include <bit_container.h>
-#include <endian.h>
+#include <portable_endian.h>
 #include <stdexcept>
 
 namespace {

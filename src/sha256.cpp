@@ -4,7 +4,7 @@
 
 #include <sha256.h>
 
-#include <endian.h>
+#include <portable_endian.h>
 #include <string.h>
 
 // Internal implementation code.

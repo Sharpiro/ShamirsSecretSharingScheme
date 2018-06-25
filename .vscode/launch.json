@@ -6,7 +6,7 @@
             "preLaunchTask": "make",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/mnt/c/gitbase/ShamirsSecretSharingScheme\\build\\src\\Shamir-cli",
+            "program": "/mnt/c/gitbase/ShamirsSecretSharingScheme/build/src/Shamir-cli",
             "args": [
                 "disthex",
                 "3",

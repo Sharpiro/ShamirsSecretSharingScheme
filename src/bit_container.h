@@ -1,7 +1,6 @@
 #ifndef BIT_CONTAINER_H
 #define BIT_CONTAINER_H 1
 
-#include <cstddef>
 #include <cstdint>
 #include <vector>
 

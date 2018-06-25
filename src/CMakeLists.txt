@@ -5,6 +5,7 @@ add_library(shamirsharing
 	hmac_sha256.h
 	#hmac_sha512.cpp
 	#hmac_sha512.h
+	portable_endian.h
 	sha256.cpp
 	sha256.h
 	#sha512.cpp
