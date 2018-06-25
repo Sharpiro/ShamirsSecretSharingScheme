@@ -48,6 +48,5 @@
         "xstddef": "cpp",
         "xstring": "cpp",
         "xtree": "cpp"
-    },
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\sysnative\\bash.exe"
+    }
 }

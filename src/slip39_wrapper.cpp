@@ -23,6 +23,11 @@ namespace Shamir {
 		for (unsigned i=0; i<mnemonics.size(); ++i) {
 			auto line = slip39ToNum(mnemonics.at(i));
 			auto hex_line = power2ToHex(line, 10);
+
+			auto rebuiltIndexes = hexToPower2(hex_line, 10);
+			auto linebits = (16 * 8 + 42);
+			auto newSize = linebits / 10 + (linebits % 10 ? 1 : 0);
+			rebuiltIndexes.resize(newSize);
 			decoded_shares.push_back(hex_line);
 		}
 		return reconstruct_secret_slip(decoded_shares);
