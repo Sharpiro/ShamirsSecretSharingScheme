@@ -15,18 +15,7 @@ namespace {
 		uint16_t number;
 	};
 
-	bit_container mkshare(uint16_t index, uint16_t threshold, const std::vector<uint8_t> & dat) {
-		bit_container output;
-		overflower hdr;
-		hdr.number = ((--index) << 11) + ((--threshold) << 6);
-		hdr.number = htobe16(hdr.number);
-		std::vector<uint8_t> tmp;
-		tmp.push_back(hdr.array[0]);
-		tmp.push_back(hdr.array[1]);
-		output.push_n(tmp, 10);
-		output.push_n(dat, dat.size() * 8);
-		return output;
-	}
+
 	
 	std::vector<uint8_t> parse_share(uint16_t & index, uint16_t & threshold, bit_container & share) {
 		if ((share.get_height() - 10) % 8) throw "Share does not contain correct amount of data";
@@ -41,12 +30,14 @@ namespace {
 		return output;
 	}
 	
-	bit_container & append_checksum(bit_container & share) {
-		std::vector<uint8_t> md(32);
-		CSHA256().Write(share.data(), share.size()).Finalize(md.data());
-		share.push_n(md, 16);
-		return share;
-	}
+	//Shamir::bit_container & append_checksum(bit_container & share) {
+	//	std::vector<uint8_t> md(32);
+	//	CSHA256().Write(share.data(), share.size()).Finalize(md.data());
+	//	share.push_n(md, 16);
+	//	return share;
+	//}
+
+
 	
 	bool pop_verify_checksum(bit_container & share) {
 		std::vector<uint8_t> checksum;
@@ -63,6 +54,26 @@ namespace {
 		return checksum[0] == 0x00;
 	}
 } // anonymous
+
+bit_container mkshare(uint16_t index, uint16_t threshold, const std::vector<uint8_t> & dat) {
+	bit_container output;
+	overflower hdr;
+	hdr.number = ((--index) << 11) + ((--threshold) << 6);
+	hdr.number = htobe16(hdr.number);
+	std::vector<uint8_t> tmp;
+	tmp.push_back(hdr.array[0]);
+	tmp.push_back(hdr.array[1]);
+	output.push_n(tmp, 10);
+	output.push_n(dat, dat.size() * 8);
+	return output;
+}
+
+Shamir::bit_container & append_checksum(bit_container & share) {
+	std::vector<uint8_t> md(32);
+	CSHA256().Write(share.data(), share.size()).Finalize(md.data());
+	share.push_n(md, 16);
+	return share;
+}
 
 namespace Shamir {
 	// not true: /// does not involve checking master_secret_checksum. Only verifies chare_checksums

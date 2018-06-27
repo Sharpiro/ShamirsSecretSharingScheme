@@ -12,4 +12,6 @@ namespace Shamir {
 
 } // Shamir
 
+Shamir::bit_container & append_checksum(Shamir::bit_container & share);
+Shamir::bit_container mkshare(uint16_t index, uint16_t threshold, const std::vector<uint8_t> & dat);
 #endif

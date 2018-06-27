@@ -187,11 +187,17 @@ std::vector<int> resizeWordIndex(std::vector<int> &data, int entropySize) {
 
 #include <wordlist.h>
 #include <share.h>
+#include <bit_container.h>
+#include <share.h>
+#include <portable_endian.h>
 
 int main()
 {
 	try
 	{
+		//auto data = 16;
+		//auto hToBE = htobe16(data);
+		//auto hToLE = htole16(data);
 		//auto entropy = std::vector<uint8_t>{ 170, 187, 204, 221 };
 		//auto shareIndexes = std::vector<int>{ 130, 512, 612, 227, 732, 733, 437, 512 };
 		//auto hexVector = Shamir::power2ToHex(shareIndexes, 10);
@@ -202,9 +208,16 @@ int main()
 		//auto res2 = Shamir::fromEnthropy(entropy, 3, 2); // need randomizer
 
 		//auto mnemonic = std::vector<std::string>{ "acid", "reward", "furnace", "beauty", "warfare", "rich", "town", "awkward" };
-		auto mnemonic = std::vector<std::string>{ "acid", "glance" ,"scatter" ,"multiply" ,"muscle" ,"evolve" ,"vote" ,"hedgehog" ,"vanish" ,"shoe" ,"road" ,"sense" ,"ugly" ,"raise" ,"sister" ,"scout" ,"educate" };
+		/*auto mnemonic = std::vector<std::string>{ "acid", "glance" ,"scatter" ,"multiply" ,"muscle" ,"evolve" ,"vote" ,"hedgehog" ,"vanish" ,"shoe" ,"road" ,"sense" ,"ugly" ,"raise" ,"sister" ,"scout" ,"educate" };
 		auto mnemonics = std::vector<std::vector<std::string>>{ mnemonic };
-		auto num_share = Shamir::toEnthropy(mnemonics);
+		auto num_share = Shamir::toEnthropy(mnemonics);*/
+		auto temp = Shamir::fromEnthropy(std::vector<uint8_t>{0xaa, 0xbb, 0xcc, 0xdd}, 3, 2);
+
+		//push_n test
+		/*auto data = Shamir::bit_container(std::vector<uint8_t>{ 0, 89, 11, 250, 70, 145, 211, 143, 97, 174, 240, 49, 187, 167, 17, 233, 236, 44, 155, 0, 17, 18 });
+		auto tmp_cont = mkshare(1, 2, data);*/
+		//append_checksum(data);
+		//data.push_n(std::vector<uint8_t>{17, 18, 214, 226}, 16);
 	}
 	catch (const char *s)
 	{
