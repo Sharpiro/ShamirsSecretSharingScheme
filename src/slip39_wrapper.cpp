@@ -13,8 +13,8 @@ namespace Shamir {
 		std::vector<std::vector<std::string>> output(shares.size());
 		for (unsigned i = 0; i < shares.size(); ++i) {
 			auto line = hexToPower2(shares.at(i), 10);
-			auto entropySize = 16;
-			auto linebits = (entropySize * 8 + 42);
+			//auto entropySize = 16;
+			auto linebits = (enthropy.size() * 8 + 42);
 			line.resize(linebits / 10 + (linebits % 10 ? 1 : 0));
 			for (auto word : line) output.at(i).push_back(slip_words[word]);
 		}

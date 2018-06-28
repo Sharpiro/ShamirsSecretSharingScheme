@@ -211,7 +211,7 @@ int main()
 		/*auto mnemonic = std::vector<std::string>{ "acid", "glance" ,"scatter" ,"multiply" ,"muscle" ,"evolve" ,"vote" ,"hedgehog" ,"vanish" ,"shoe" ,"road" ,"sense" ,"ugly" ,"raise" ,"sister" ,"scout" ,"educate" };
 		auto mnemonics = std::vector<std::vector<std::string>>{ mnemonic };
 		auto num_share = Shamir::toEnthropy(mnemonics);*/
-		auto temp = Shamir::fromEnthropy(std::vector<uint8_t>{0xaa, 0xbb, 0xcc, 0xdd}, 3, 2);
+		auto temp = Shamir::fromEnthropy(std::vector<uint8_t>{0x09, 0x08, 0x07, 0x06}, 3, 2);
 
 		//push_n test
 		/*auto data = Shamir::bit_container(std::vector<uint8_t>{ 0, 89, 11, 250, 70, 145, 211, 143, 97, 174, 240, 49, 187, 167, 17, 233, 236, 44, 155, 0, 17, 18 });
