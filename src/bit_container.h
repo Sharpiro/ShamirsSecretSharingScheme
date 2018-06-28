@@ -14,8 +14,8 @@ namespace Shamir {
 			void pop_n(size_t n);
 			void push_n(const std::vector<uint8_t> & data, size_t n);
 			size_t get_height() const { return height; }
-		private:
 			size_t height;
+		private:
 	};
 } // Shamir
 

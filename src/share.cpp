@@ -71,6 +71,7 @@ bit_container mkshare(uint16_t index, uint16_t threshold, const std::vector<uint
 Shamir::bit_container & append_checksum(bit_container & share) {
 	std::vector<uint8_t> md(32);
 	CSHA256().Write(share.data(), share.size()).Finalize(md.data());
+	//md.resize(2);
 	share.push_n(md, 16);
 	return share;
 }

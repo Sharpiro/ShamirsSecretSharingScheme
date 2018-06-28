@@ -191,10 +191,18 @@ std::vector<int> resizeWordIndex(std::vector<int> &data, int entropySize) {
 #include <share.h>
 #include <portable_endian.h>
 
+int* getData() {
+	int data[] = { 1, 2, 3 };
+	//int* pointer = &data;
+	return data;
+}
+
 int main()
 {
 	try
 	{
+		auto data = getData();
+
 		//auto data = 16;
 		//auto hToBE = htobe16(data);
 		//auto hToLE = htole16(data);
@@ -213,6 +221,14 @@ int main()
 		auto num_share = Shamir::toEnthropy(mnemonics);*/
 		auto temp = Shamir::fromEnthropy(std::vector<uint8_t>{0x09, 0x08, 0x07, 0x06}, 3, 2);
 
+		int x = 5;
+		auto y = data[2];
+		auto z = data[1];
+		auto a = 3;
+
+		Shamir::bit_container output;
+		Shamir::bit_container copy = output;
+		output.height = 12;
 		//push_n test
 		/*auto data = Shamir::bit_container(std::vector<uint8_t>{ 0, 89, 11, 250, 70, 145, 211, 143, 97, 174, 240, 49, 187, 167, 17, 233, 236, 44, 155, 0, 17, 18 });
 		auto tmp_cont = mkshare(1, 2, data);*/
