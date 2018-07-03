@@ -201,7 +201,7 @@ int main()
 {
 	try
 	{
-		auto data = getData();
+		//auto data = getData();
 
 		//auto data = 16;
 		//auto hToBE = htobe16(data);
@@ -219,12 +219,14 @@ int main()
 		/*auto mnemonic = std::vector<std::string>{ "acid", "glance" ,"scatter" ,"multiply" ,"muscle" ,"evolve" ,"vote" ,"hedgehog" ,"vanish" ,"shoe" ,"road" ,"sense" ,"ugly" ,"raise" ,"sister" ,"scout" ,"educate" };
 		auto mnemonics = std::vector<std::vector<std::string>>{ mnemonic };
 		auto num_share = Shamir::toEnthropy(mnemonics);*/
-		auto temp = Shamir::fromEnthropy(std::vector<uint8_t>{0x09, 0x08, 0x07, 0x06}, 3, 2);
+		//auto temp = Shamir::fromEnthropy(std::vector<uint8_t>{9, 8, 7, 6}, 3, 2);
+		//auto temp = Shamir::fromEnthropy(std::vector<uint8_t>{8, 7, 6, 5, 4, 3, 2, 1}, 6, 3);
+		auto temp = Shamir::fromEnthropy(std::vector<uint8_t>{251, 229, 93, 116, 69, 163, 53, 223, 72, 46, 102, 144, 193, 219, 199, 154, 202, 215, 36, 158, 74, 73, 1, 167, 125, 72, 54, 201, 98, 233, 236, 114}, 4, 3);
 
-		int x = 5;
+		/*int x = 5;
 		auto y = data[2];
 		auto z = data[1];
-		auto a = 3;
+		auto a = 3;*/
 
 		Shamir::bit_container output;
 		Shamir::bit_container copy = output;

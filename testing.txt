@@ -1,4 +1,18 @@
-raw share
+secret
+    [0]	9  
+    [1]	8  
+    [2]	7  
+    [3]	6  
+
+checksummed secret
+    [0]	9  
+    [1]	8  
+    [2]	7  
+    [3]	6  
+    [4]	99 
+    [5]	217
+
+shamir part
     [0]	11
     [1]	10
     [2]	5
@@ -27,6 +41,31 @@ with checksum
     [7]	234
     [8]	170
     [9]	64 
+
+to index list
+    [0]	1
+    [1]	44
+    [2]	160
+    [3]	321
+    [4]	97
+    [5]	878
+    [6]	682
+    [7]	576
+    [8]	0
+
+to mnemonic
+	[0]	"acid"	   
+	[1]	"arena"	   
+	[2]	"clown"	   
+	[3]	"exhaust"
+	[4]	"bracket"
+	[5]	"system"
+	[6]	"problem"
+	[7]	"morning"
+
+
+
+
 
 
 	raw share
